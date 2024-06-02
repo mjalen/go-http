@@ -5,7 +5,6 @@ import (
 	"flag"
 	"log"
 	"fmt"
-	"slices"
 
 	"go-http/http/route"
 )
@@ -45,10 +44,7 @@ func main() {
 				log.Printf("ERR (Read): %s", err)
 			}
 
-			i := slices.Index(req, 0)
-			req = req[:i]
-
-			log.Printf("Got request: %+v", req)
+			log.Printf("Got request: %s", req)
 			router.Process(req, conn)
 			conn.Close() // update to send info back, and dynamicly close based on connection requirements.
 		}()

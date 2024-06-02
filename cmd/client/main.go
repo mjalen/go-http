@@ -7,7 +7,7 @@ import (
 	"log"
 	"net"
 
-	"go-http/http/message"
+	"go-http/http/syntax"
 )
 
 func main() {
@@ -24,7 +24,7 @@ func main() {
 	}
 
 	req := fmt.Sprintf("GET %s\r\n", path)
-	ok := message.Validate("Simple-Request", []byte(req)) 
+	ok := syntax.Validate("Simple-Request", []byte(req)) 
 	if !ok {
 		log.Fatalf("ERR: Malformed request.")
 	}
